@@ -10,57 +10,38 @@
 
 <body>
     <header>
-            <h1>Super<span>Market</span></h1>
+        <h1>Super<span>Market</span></h1>
     </header>
     <section>
         <div class="signup-container">
-            <form class="signup-box">
+            <div class="signup-box">
                 <div>
                     <h2>Create Your Account</h2>
                 </div>
-                <div class="signUp-input-container">
-                    <div class="signup-input">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" class="name" name="name">
-                    </div>
-                </div>
-                <div class="signup-input">
-                    <label for="mobile">Mobile</label>
-                    <div class="mobile-field">
-                        <div class="indian-code">
-                            <h6>IN +91</h6>
-                        </div>
-                        <input type="text" id="mobile" name="mobile" class="mobile">
-                    </div>
-                </div>
-                <div class="signUp-input-container">
-                    <div class="signup-input">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="email" name="email">
-                    </div>
-                </div>
-                <div class="signUp-input-container">
-                    <div class="signup-input">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" class="password" name="password">
-                    </div>
-                </div>
-                <div class="signUp-input-container">
-                    <div class="signup-input">
-                        <label for="confirm-password">Confirm Password</label>
-                        <input type="password" id="conf-password" class="conf-password" name="conf-password">
-                    </div>
-                </div>
-                <div class="already-have">
+                <form action="">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="name" name="name" placeholder="Enter your name...">
+                    <label for="">Mobile</label>
+                    <input type="text" id="mobile" name="mobile" class="mobile" placeholder="Mobile number without prefix +91">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="email" name="email" placeholder="example@gmail.com">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="password" name="password"
+                        placeholder="Must contain atleast 8 character">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" class="confirm-password" name="confirm-password"
+                        placeholder="Re-enter your password">
                     <a href="#">Already have an account?Login</a>
-                </div>
-                <div class="signup">
-                    <input type="submit" name="signup-btn" id="signup-btn" class="signup-btn" value="Sign Up">
-                </div>
-            </form>
+                    <div class="signup-btn-container">
+                        <input type="submit" name="signup-btn" id="signup-btn" class="signup-btn" value="Sign Up">
+                    </div>
+                </form>
+            </div>
+
     </section>
     <footer>
 
     </footer>
 </body>
+
 </html>
