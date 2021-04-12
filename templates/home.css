@@ -152,17 +152,18 @@ body{
     max-width: 100%;
     max-height: 100%;
 }
-.carousel-container > i{
+.carousel-container .right-arrow,.left-arrow{
     color: rgba(250,250,250,0.4);
     font-size: 2rem;
     position: absolute;
     top: 50%;
+    cursor: pointer;
     transform: translateY(-50%);
 }
-.carousel-container .fa-chevron-right{
+.carousel-container .right-arrow{
     right: 4%;
 }
-.carousel-container .fa-chevron-left{
+.carousel-container .left-arrow{
     left: 4%;
 }
 .other-two{
@@ -231,7 +232,7 @@ body{
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
 .categories-heading h1{
     font-size: 3rem;
@@ -275,3 +276,89 @@ body{
     }
 }
 /* categories layout styles ends */
+/* Special offers */
+.special-offers-container{
+    width: 100%;
+    margin-top: 4rem;
+}
+.special-offers{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.product-card {
+	width: 250px;
+	/* background-color: yel; */
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	align-items: flex-start;
+	flex-wrap: wrap;
+    margin: 1rem 0;
+	box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.1);
+	border-radius: 4px;
+}
+.product-card img{
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+}
+.product-center{
+    justify-content: center;
+}
+.product-card .card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+.wishlist-and-add {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
+.wishlist-and-add button {
+	border: none;
+	padding: 0.5rem 2rem;
+	border-radius: 3px;
+	background-color: var(--orange);
+}
+.margin-top{
+    margin-top: 0.3rem;
+}
+.margin-bottom{
+    margin-bottom: 0.3rem;
+}
+.special-offers-heading h1{
+    font-size: 3rem;
+    font-weight: 400;
+}
+@media screen and (max-width:600px){
+    .product-card img {
+        width: 165px;
+        height: 165px;
+    }
+    .product-card {
+        width: 165px;
+        font-size: 9px;
+        margin: 0.4rem;
+    }
+    .wishlist-and-add button {
+        padding: 0.3rem 1rem;
+        font-size: 9px;
+    }
+}
+
+/* Special offers */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+
+  @keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
