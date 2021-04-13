@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="home.css" />
-    <title>home page</title>
+    <link rel="stylesheet" href="product-details.css">
+    <title>Product details</title>
 </head>
-
 <body>
     <header>
         <nav class="header-container">
@@ -18,7 +16,7 @@
             </div>
             <div class="search">
                 <i class="fas fa-search"></i>
-                <input type="text" class="search" name="search" id="search" placeholder="Search items..." />
+                <input type="text" class="search" name="search" id="search" placeholder="Search items...">
             </div>
             <div class="account-and-cart">
                 <i class="fas fa-heart"></i>
@@ -31,22 +29,17 @@
         <div class="nav-links-container">
             <h6>Home</h6>
             <h6>New Arrival<span class="badge">New</span></h6>
-            <h6>
-                Categories<span><i class="fas fa-sort-down"></i></span>
-            </h6>
+            <h6>Categories<span><i class="fas fa-sort-down"></i></span></h6>
             <h6>Contact Us</h6>
         </div>
     </section>
     <main>
-
-        <!-- carousel and offer container -->
-
-        <section class="home-main-container">
-            <div class="offer">
-                <div class="carousel-container">
-                    <img class="carousel-images fade" src="./img/pexels-arshad-sutar-1749303.jpg" alt="" />
-                    <img class="carousel-images fade" src="./img/dev-dots.png" alt="">
-                    <img class="carousel-images fade" src="./img/pexels-vlad-alexandru-popa-1402787.jpg" alt="">
+        <div class="main-container">
+            <section class="product-details-container">
+                <div class="product-image-section">
+                    <img src="img/pexels-arshad-sutar-1749303.jpg" alt="" class="product-image-carousel fade">
+                    <img src="img/pexels-vlad-alexandru-popa-1402787.jpg" alt="" class="product-image-carousel fade">
+                    <img src="img/dev-dots.png" alt="" class="product-image-carousel fade">
                     <div class="right-arrow" onclick="slideChange(1)">
                         <i class="fas fa-chevron-right"></i>
                     </div>
@@ -54,60 +47,37 @@
                         <i class="fas fa-chevron-left"></i>
                     </div>
                 </div>
-                <div class="other-two">
-                    <img src="./img/dev-dots.png" alt="" />
-                    <img src="./img/dev-dots.png" alt="" />
-                </div>
-            </div>
-
-            <!-- Categories container -->
-
-            <section class="categories">
-                <div class="categories-heading">
-                    <h1>Categories</h1>
-                </div>
-                <div class="categories-layout">
-                    <div class="categories-card">
-                        <a href="#"><button>Category</button></a>
+                <div class="product-details-section">
+                    <div class="product-name">
+                        <h4>Horlicks is genious</h4>
                     </div>
-                    <div class="categories-card">
-                        <a href="#"><button>Category</button></a>
+                    <div class="price">
+                        <strong>$233</strong>
                     </div>
-                    <div class="categories-card">
-                        <a href="#"><button>Category</button></a>
+                    <div class="delivery">
+                        <p>In Stock</p>
+                        <p>Free delivery upto 10km</p>
                     </div>
-                    <div class="categories-card">
-                        <a href="#"><button>Category</button></a>
+                    <div class="description">
+                        <h4>Description</h4>
+                        <ul>
+                            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Invent</li>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit, veritatis! Eaque neque, corporis sed nisi consequuntur id officiis doloremque repudiandae?</li>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, modi.</li>
+                        </ul>
                     </div>
-                    <div class="categories-card">
-                        <a href="#"><button>Category</button></a>
-                    </div>
-                    <div class="categories-card">
-                        <a href="#"><button>Category</button></a>
-                    </div>
-                    <div class="categories-card">
-                        <a href="#"><button>Category</button></a>
-                    </div>
-                    <div class="categories-card">
-                        <a href="#"><button>Category</button></a>
-                    </div>
-                    <div class="categories-card">
-                        <a href="#"><button>Category</button></a>
-                    </div>
-                    <div class="categories-card">
-                        <a href="#"><button>Category</button></a>
+                    <div class="buttons">
+                        <button class="add">Add to cart</button>
+                        <button class="buy">Buy now</button>
                     </div>
                 </div>
             </section>
-
-            <!-- Special offers container -->
-
-
-            <section class="special-offers-container">
-                <div class="special-offers-heading">
-                    <h1>Special Offers</h1>
+            <section class="similiar-products-container">
+                <div class="similiar-products-heading">
+                    <h1>Similiar Products</h1>
                 </div>
-                <div class="special-offers">
+                <div class="similiar-products">
                     <div class="product-card">
                         <div class="image">
                             <img src="../71Cgh7YiE1L._SL1500_.jpg" alt="">
@@ -212,12 +182,8 @@
                     </div>
                 </div>
             </section>
-        </section>
+        </div>
     </main>
-    <!-- Footer here -->
-    <footer>
-
-    </footer>
     <script>
         var slideIndex = 0;
         var right = false;
@@ -231,7 +197,7 @@
         }
         function carouselSlide(n){
             var i;
-            var slides = document.getElementsByClassName("carousel-images")
+            var slides = document.getElementsByClassName("product-image-carousel")
             if(n>slides.length -1){
                 slideIndex = 0;
             }
@@ -245,5 +211,4 @@
         }
     </script>
 </body>
-
 </html>
