@@ -3,7 +3,9 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.render('user/home',{admin:false})
 });
-
+router.get('/signup',(req,res) => {
+  res.render('user/signup',{loginOrSignupPage:true});
+})
 module.exports = router;

@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/stylesheets/user-header.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/home.css">
+    <link rel="stylesheet" href="/stylesheets/signup.css">
+    <link rel="stylesheet" href="/stylesheets/user-login-signup-header.css">
     <title>Document</title>
 </head>
 <body>
     {{#if admin}}
-    {{>admin-header}}
+        {{>admin-header}}
     {{else}}
-    {{>user-header}}
+        {{#if loginOrSignupPage}}
+            {{>user-login-signup-header}}
+        {{else}}
+            {{>user-header}}
+        {{/if}}
     {{/if}}
     {{{body}}}
 </body>
