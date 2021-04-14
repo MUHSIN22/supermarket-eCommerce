@@ -107,7 +107,7 @@ footer{
     cursor: pointer;
 }
 .login-btn:hover{
-    background-color: rgb(206, 153, 55);
+    background-color: rgb(143, 138, 129);
 }
 .login-btn-container{
     display: flex;

@@ -7,7 +7,9 @@ const hbs = require('express-handlebars')
 
 var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
+
 const db = require('./config/connection')
+
 
 var app = express();
 
