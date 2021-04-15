@@ -4,7 +4,7 @@
             <div>
                 <h2>Create Your Account</h2>
             </div>
-            <form action="/signup" method="POST">
+            <form action="" method="" id="signup-form">
                 <label for="name">Name</label>
                 <input type="text" id="name" class="name" name="name" placeholder="Enter your name..." onchange="nameValidation()">
                 <label for="">Mobile</label>
@@ -24,12 +24,13 @@
                     <p id="password-character">Password must be atleast 8 character including <br> atleast one special character and a number</p>
                 </div>
                 <label for="confirm-password">Confirm Password</label>
-                <input type="password" oninput="passwordValidation()" id="confirm-password" class="confirm-password" name="confirm-password"
+                <input type="password" oninput="passwordValidation()" id="confirm-password" class="confirm-password" name="confirmPassword"
                     placeholder="Re-enter your password">
+                <input type="text" id="form-validation" class="form-validation" name="formValidation" value="" hidden>
                 <p id="not-match-password">Password doesn't match</p>
                 <a href="#">Already have an account?Login</a>
                 <div class="signup-btn-container">
-                    <input onclick="prevent()" type="submit" name="signup-btn" id="signup-btn" class="signup-btn" value="Sign Up">
+                    <input type="submit" name="signup-btn" id="signup-btn" class="signup-btn" value="Sign Up">
                 </div>
             </form>
         </div>

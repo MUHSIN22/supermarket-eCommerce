@@ -48,6 +48,7 @@
     transition: 0.3s ease-in-out;
     border-radius: 4px;
     cursor: pointer;
+    outline: none;
 }
 .signup-btn:hover{
     background-color: rgb(206, 153, 55);
