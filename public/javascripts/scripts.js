@@ -1,5 +1,4 @@
-// const formValidation;
-console.log();
+let emailAvailable,mobileAvailable;
 function passwordVisibilityChange(){
     console.log('entered to function')
     var password = document.getElementById("password")
@@ -46,8 +45,7 @@ function passwordValidation() {
 function mobileValidate(){
     var mobile = document.getElementById("mobile")
     var mobileError = document.getElementById("mobile-error")
-    console.log(parseInt(mobile.value));
-     if(!Number.isNaN(parseInt(mobile.value)) && mobile.value.length === 10){
+    if(!Number.isNaN(parseInt(mobile.value)) && mobile.value.length === 10){
         mobile.style.boxShadow = "2px 2px 4px green,-2px -2px 3px green";
         mobileError.style.display = "none";
         return true
@@ -69,7 +67,7 @@ function nameValidation () {
 }
 $("#signup-form").submit((e)=> {
     e.preventDefault();
-    if(passwordLengthValidation() && passwordValidation() && mobileValidate() && nameValidation()){
+    if(passwordLengthValidation() && passwordValidation() && mobileValidate() && nameValidation() && emailAvailable && mobileAvailable){
         document.getElementById("form-validation").value = 'validated';
         $.ajax({
             url : "/signup",
@@ -80,10 +78,58 @@ $("#signup-form").submit((e)=> {
             }
         })
     }else{
-        console.log('in else');
         passwordLengthValidation() ;
         passwordValidation();
         mobileValidate();
         nameValidation();
     }
+})
+
+$('document').ready(function(){
+    $("#mobile").on('blur',function(){
+        var mobile = $("#mobile").val()
+    $.ajax({
+        url : '/check-mobile',
+        method : 'post',
+        data : {
+            mobile : mobile
+        },
+        success : (response)=>{
+            if(response.available){
+                $("#mobile-error").html(response.message)
+                $("#mobile-error").css({'color' : '#3eff3e', 'display' : 'block'})
+                $("#mobile").css({'margin-bottom':'0'})
+                mobileAvailable = true;
+            }else{
+                $("#mobile").css({'margin-bottom':'0'})
+                $("#mobile-error").html(response.message)
+                $("#mobile-error").css({ 'display' : 'block'})
+                mobileAvailable = false
+            }
+        }
+    })
+    })
+    $("#email").on('blur',function(){
+        var email = $("#email").val()
+    $.ajax({
+        url : '/check-email',
+        method : 'post',
+        data : {
+            email : email
+        },
+        success : (response)=>{
+            if(response.available){
+                $("#email-error").html(response.message)
+                $("#email-error").css({'color' : '#3eff3e', 'display' : 'block'})
+                $("#email").css({'margin-bottom':'0'})
+                emailAvailable = true;
+            }else{
+                $("#email").css({'margin-bottom':'0'})
+                $("#email-error").html(response.message)
+                $("#email-error").css({'display' : 'block'})
+                emailAvailable = false
+            }
+        }
+    })
+    })
 })

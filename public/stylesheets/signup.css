@@ -75,19 +75,7 @@
     display: none;
     opacity: 0.5;
 }
-#not-match-password{
-    font-size: 0.8rem;
-    color: red;
-    margin-bottom: 0.5rem;
-    display: none;
-}
-#password-character{
-    font-size: 0.8rem;
-    color: red;
-    margin-bottom: 0.5rem;
-    display: none;
-}
-#mobile-error{
+#not-match-password,#mobile-error,#password-character,#email-error{
     font-size: 0.8rem;
     color: red;
     margin-bottom: 0.5rem;

@@ -6,26 +6,29 @@
             </div>
             <form action="" method="" id="signup-form">
                 <label for="name">Name</label>
-                <input type="text" id="name" class="name" name="name" placeholder="Enter your name..." onchange="nameValidation()">
+                <input type="text" id="name" class="name" name="name" placeholder="Enter your name..."
+                    onchange="nameValidation()">
                 <label for="">Mobile</label>
                 <input type="text" id="mobile" name="mobile" class="mobile"
                     placeholder="Mobile number without prefix +91" onchange="mobileValidate()">
                 <p id="mobile-error">Please enter a valid number</p>
                 <label for="email">Email</label>
                 <input type="email" id="email" class="email" name="email" placeholder="example@gmail.com">
+                <p id="email-error">Please enter a valid number</p>
                 <div class="for-password">
                     <div class="visible-icon-box" onclick="passwordVisibilityChange()">
                         <img class="invisible-icon" src="/images/password icons/invisible-symbol.svg" alt="">
                         <img class="visible-icon" src="/images/password icons/view.svg" alt="">
                     </div>
                     <label for="password">Password</label>
-                    <input type="password" oninput="passwordLengthValidation()" id="password" class="password" name="password"
-                        placeholder="Must contain atleast 8 character">
-                    <p id="password-character">Password must be atleast 8 character including <br> atleast one special character and a number</p>
+                    <input type="password" oninput="passwordLengthValidation()" id="password" class="password"
+                        name="password" placeholder="Must contain atleast 8 character">
+                    <p id="password-character">Password must be atleast 8 character including <br> atleast one special
+                        character and a number</p>
                 </div>
                 <label for="confirm-password">Confirm Password</label>
-                <input type="password" oninput="passwordValidation()" id="confirm-password" class="confirm-password" name="confirmPassword"
-                    placeholder="Re-enter your password">
+                <input type="password" oninput="passwordValidation()" id="confirm-password" class="confirm-password"
+                    name="confirmPassword" placeholder="Re-enter your password">
                 <input type="text" id="form-validation" class="form-validation" name="formValidation" value="" hidden>
                 <p id="not-match-password">Password doesn't match</p>
                 <a href="#">Already have an account?Login</a>
