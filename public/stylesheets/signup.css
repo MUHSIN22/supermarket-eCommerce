@@ -28,6 +28,7 @@
     padding: 0.8rem;
     border-radius: 5px;
     width: 100%;
+    outline: none;
 }
 .confirm-password{
     margin-bottom: 0.3rem;
@@ -55,5 +56,48 @@
     text-decoration: none;
     color: rgb(62, 131, 241);
 }
+.for-password{
+    position: relative;
+}
+.visible-icon-box {
+	width: 1.2rem;
+	height: 1.5rem;
+	position: absolute;
+	right: 2%;
+    top: 39%;
+    cursor: pointer;
+}
+.visible-icon-box > img{
+    opacity: 0.5;
+}
+.invisible-icon{
+    display: none;
+    opacity: 0.5;
+}
+#not-match-password{
+    font-size: 0.8rem;
+    color: red;
+    margin-bottom: 0.5rem;
+    display: none;
+}
+#password-character{
+    font-size: 0.8rem;
+    color: red;
+    margin-bottom: 0.5rem;
+    display: none;
+}
+#mobile-error{
+    font-size: 0.8rem;
+    color: red;
+    margin-bottom: 0.5rem;
+    display: none;
+}
 /* signup box styles */
 /* main content style */
+
+@media screen and (max-width : 500px){
+    .signup-box{
+        width: 22rem; 
+        padding: 1.5rem 2rem 1rem 2rem;
+    }
+}

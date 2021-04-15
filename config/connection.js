@@ -15,6 +15,6 @@ module.exports.connect = (done) => {
     })
 }
 
-module.exports.get = ()=>{
+module.exports.get = () => {
     return state.db
 }
