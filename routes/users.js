@@ -4,16 +4,18 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('user/home',{admin:false})
+  let user = req.session.user
+  res.render('user/home',{admin:false,user})
 });
 router.get('/signup',(req,res) => {
   res.render('user/signup',{loginOrSignupPage:true});
 })
 router.post('/signup',(req,res) => {
   delete req.body.confirmPassword;
-  console.log(req.body);
-  userHelpers.doSignup(req.body).then((data) => {
-    console.log(data.ops[0]);
+  userHelpers.doSignup(req.body).then((signUpDetails) => {
+    req.session.user = signUpDetails;
+    req.session.userLoggedIn = true;
+    res.json({status:true})
   })
 })
 router.post('/check-mobile',(req,res)=> {

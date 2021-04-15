@@ -7,7 +7,7 @@ module.exports = {
         return new Promise(async (resolve, reject) => {
             userDetails.password = await bcrypt.hash(userDetails.password, 10);
             db.get().collection(collections.USER_COLLECTION).insertOne(userDetails).then((data) => {
-                resolve(data);
+                resolve(data.ops[0]);
             });
 
         });

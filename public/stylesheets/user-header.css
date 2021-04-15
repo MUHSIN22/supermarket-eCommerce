@@ -25,6 +25,22 @@
     margin-right: 5px;
     cursor: pointer;
 }
+.header-signup-btn, .header-login-btn {
+	background: no-repeat;
+	border: 1px solid var(--light);
+	border-radius: 3px;
+	color: var(--light);
+	width: 5rem;
+	height: 2rem;
+	font-size: 1rem;
+	transition: 0.3s ease-in-out;
+	cursor: pointer;
+	margin-right: 0.2rem;
+}
+.header-signup-btn:hover,.header-login-btn:hover{
+    background-color: var(--light);
+    color: var(--dark);
+}
 .search i{
     color: rgba(255,255,255,.6);
 }

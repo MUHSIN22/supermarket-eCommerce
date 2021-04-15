@@ -9,9 +9,14 @@
                 <input type="text" class="search" name="search" id="search" placeholder="Search items..." />
             </div>
             <div class="account-and-cart">
-                <i class="fas fa-heart"></i>
-                <i class="fas fa-shopping-cart"><span class="badge">12</span></i>
-                <i class="fas fa-user"></i>
+                {{#if user}}
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-shopping-cart"><span class="badge">12</span></i>
+                    <i class="fas fa-user"></i>
+                {{else}}
+                    <a href="/signup"><button class="header-signup-btn">Sign up</button></a>
+                     <a href="/login"></a><button class="header-login-btn">Log in</button></a>
+                {{/if}}
             </div>
         </nav>
     </header>
