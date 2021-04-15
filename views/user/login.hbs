@@ -1,0 +1,25 @@
+ <div class="layout">
+    <div  class="form">
+        <div>                                                        
+        <p style="Color:var(--light);text-align:center;font-size:25px;">login to your account</p>
+          </div>
+          <form action="" method="" id="login-form">
+            <label style="Color:var(--light)" for="mobile">Mobile</label>
+            <input class="mobile" type="text" id="mobile" name="phone" placeholder="Mobile number without prefix +91"  onchange="mobileValidate()" >
+            <p id="mobile-error">Please enter a valid number</p>
+            
+            <label style="Color:var(--light)" for="password">Password</label>
+            <input type="password" class="password" id="password" oninput="passwordLengthValidation()" name="pswd" placeholder="Must contain atleast 8 character" >
+            <p id="password-character">Password must be atleast 8 character including <br> atleast one special character and a number</p>
+            <div class="forgot">
+            <input type="text" id="form-validation" class="form-validation" name="formValidation" value="" hidden>
+            <p id="not-match-password">Password doesn't match</p>
+            <a href="#">Forgot Password ?</a>
+            <a href="#">Haven't Account ?</a>
+            </div>
+            <div class="login-btn-container">
+            <button type="submit" id="login-btn" name="login-btn" class="login-btn">Login</button>
+        </div>
+    </form>
+    </div>
+    </div>
