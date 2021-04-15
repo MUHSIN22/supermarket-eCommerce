@@ -8,4 +8,5 @@ router.get('/', function(req, res, next) {
 router.get('/signup',(req,res) => {
   res.render('user/signup',{loginOrSignupPage:true});
 })
+
 module.exports = router;
