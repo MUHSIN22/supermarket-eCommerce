@@ -9,6 +9,7 @@ router.get('/signup',(req,res) => {
   res.render('user/signup',{loginOrSignupPage:true});
 })
 router.post('/signup',(req,res) => {
+  delete req.body.confirmPassword;
   console.log(req.body);
   
 })
