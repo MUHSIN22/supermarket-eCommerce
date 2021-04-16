@@ -53,6 +53,13 @@
     text-decoration: none;
     color: rgb(62, 131, 241);
 }
+.otp-text{
+    margin-bottom: 1rem;
+}
+.wrong-otp{
+    font-size: 0.8rem;
+    color: red;
+}
 @media screen and (max-width : 500px){
     .otp-box{
         width: 22rem; 

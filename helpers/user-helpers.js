@@ -18,19 +18,24 @@ module.exports = {
             console.log(mobileExist);
             if (mobileExist) {
                 resolve({ message: 'Number already exist', available: false });
-            } else {
+            }else if(mobile.mobile == ''){
+                resolve({message:'Please enter mobile number',available: false})
+            } 
+            else {
                 resolve({ message: "Number available", available: true })
             }
         })
     },
     checkEmail: (email) => {
         return new Promise(async (resolve, reject) => {
-            console.log(email);
+            console.log(email, 'email');
             var emailExist = await db.get().collection(collections.USER_COLLECTION).findOne(email);
-            console.log(emailExist);
-            if (emailExist) {
+            if(emailExist) {
                 resolve({ message: 'Email already exist', available: false });
-            } else {
+            }else if(email.email == ''){
+                resolve({message:'Please enter email',available: false})
+            }
+            else {
                 resolve({ message: "Email available", available: true })
             }
         })

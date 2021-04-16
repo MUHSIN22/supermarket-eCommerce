@@ -1,10 +1,14 @@
 var express = require('express');
 const userHelpers = require('../helpers/user-helpers');
 var router = express.Router();
+const otpGenerator = require('otp-generator')
+// Global variables
+let OTP,wrong = '';
+//Global varible
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  let user = req.session.user
+  let user = req.session.user //user assigned to global variables
   res.render('user/home',{admin:false,user})
 });
 router.get('/signup',(req,res) => {
@@ -38,9 +42,22 @@ router.post('/login',(req,res)=>{
 })
 router.get('/otp-verify',(req,res) => {
   if(req.session.userLoggedIn){
-    res.render('user/otp-form',{})
+    let mobile = req.session.user.mobile
+    if(wrong == ''){
+      OTP = otpGenerator.generate(6, { upperCase: false, specialChars: false ,alphabets:false});
+      console.log(OTP);
+    }
+    res.render('user/otp-form',{mobile,loginOrSignupPage:true,wrong})
   }else{
-    res.redirect('/singup')
+    res.redirect('/')
+  }
+})
+router.post('/otp-verify',(req,res) => {
+  if(OTP == req.body.otp){
+    res.redirect('/signup');
+  }else{
+    wrong = 'Wrong OTP!'
+    res.redirect('/otp-verify')
   }
 })
 module.exports = router;

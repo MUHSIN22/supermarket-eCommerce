@@ -1,9 +1,9 @@
 <section class="otp-container">
     <div class="otp-box">
-        <form action="" method="" id="otp-form">
-            <p id="otp-text"></p>
-            <a href="#">Change number?</a>
+        <form action="/otp-verify" method="post" id="otp-form">
+            <p id="otp-text" class="otp-text">We are sent an OTP to your number <br>{{mobile}} .<a href="#">Change number?</a></p>
             <input type="text" id="otp" class="otp" name="otp" placeholder="Enter the OTP">
+            <p id="wrong-otp" class="wrong-otp">{{wrong}}</p>
             <div class="verify-btn-container">
                 <input type="submit" name="verify-btn" id="verify-btn" class="verify-btn" value="Verify">
             </div>

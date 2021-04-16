@@ -42,20 +42,6 @@ function passwordValidation() {
         return false    
     }
 }
-function mobileValidate(){
-    var mobile = document.getElementById("mobile")
-    var mobileError = document.getElementById("mobile-error")
-    if(!Number.isNaN(parseInt(mobile.value)) && mobile.value.length === 10){
-        mobile.style.boxShadow = "2px 2px 4px green,-2px -2px 3px green";
-        mobileError.style.display = "none";
-        return true
-    }
-    else{
-        mobile.style.boxShadow = "2px 2px 4px red,-2px -2px 3px red";
-        mobileError.style.display = "block";
-        return false
-    }
-}
 function nameValidation () {
     var name = document.getElementById("name")
     if(name.length === 0){
@@ -65,9 +51,11 @@ function nameValidation () {
         return true
     }
 }
+
+//sign up validation starts
 $("#signup-form").submit((e)=> {
     e.preventDefault();
-    if(passwordLengthValidation() && passwordValidation() && mobileValidate() && nameValidation() && emailAvailable && mobileAvailable){
+    if(passwordLengthValidation() && passwordValidation() && nameValidation() && emailAvailable && mobileAvailable){
         document.getElementById("form-validation").value = 'validated';
         $.ajax({
             url : "/signup",
@@ -76,44 +64,53 @@ $("#signup-form").submit((e)=> {
             success : (response) => {
                 console.log(response,'res');
                 if(response.status){
-                    location.href = "/otp-form";
+                    location.href = "/otp-verify";
                 }
             }
         })
     }else{
         passwordLengthValidation() ;
         passwordValidation();
-        mobileValidate();
         nameValidation();
     }
 })
-
+//signup validation ends
+//mobile and email validations
 $('document').ready(function(){
     $("#mobile").on('blur',function(){
-        var mobile = $("#mobile").val()
+        var mobile = $("#mobile")
+        var mobileError = $("#mobile-error")
     $.ajax({
         url : '/check-mobile',
         method : 'post',
         data : {
-            mobile : mobile
+            mobile : mobile.val()
         },
         success : (response)=>{
-            if(response.available){
-                $("#mobile-error").html(response.message)
-                $("#mobile-error").css({'color' : '#3eff3e', 'display' : 'block'})
-                $("#mobile").css({'margin-bottom':'0'})
-                mobileAvailable = true;
+            if(!Number.isNaN(parseInt(mobile.val())) && mobile.val().length === 10){
+                mobile.css({"boxShadow" : "2px 2px 4px green,-2px -2px 3px green"})
+                if(response.available){
+                    mobileError.html(response.message)
+                    mobileError.css({'color' : '#3eff3e', 'display' : 'block'})
+                    $("#mobile").css({'margin-bottom':'0'})
+                    mobileAvailable = true;
+                }else{
+                    $("#mobile").css({'margin-bottom':'0'})
+                    mobileError.html(response.message)
+                    mobileError.css({ 'display' : 'block'})
+                    mobileAvailable = false
+                }
             }else{
-                $("#mobile").css({'margin-bottom':'0'})
-                $("#mobile-error").html(response.message)
-                $("#mobile-error").css({ 'display' : 'block'})
-                mobileAvailable = false
-            }
+                mobile.css({"boxShadow" : "2px 2px 4px red,-2px -2px 3px red"})
+                mobileError.html('Enter a valid number')
+                mobileError.css({'display':'block','color':'red'})
+            } 
         }
     })
     })
     $("#email").on('blur',function(){
         var email = $("#email").val()
+        console.log(email);
     $.ajax({
         url : '/check-email',
         method : 'post',
@@ -135,6 +132,7 @@ $('document').ready(function(){
         }
     })
     })
+//signup and email validations end
 
 //login form
 $("#login-form").submit((e)=> {
