@@ -29,4 +29,15 @@ router.post('/check-email',(req,res) => {
   })
 })
 
+
 module.exports = router;
+
+router.get('/login',(req,res)=>{
+  res.render('user/login',{loginOrSignupPage:true})
+})
+router.post('/login',(req,res)=>{
+  console.log(req.body)
+})
+
+module.exports = router;
+
