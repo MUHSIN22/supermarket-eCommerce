@@ -74,7 +74,10 @@ $("#signup-form").submit((e)=> {
             method : "post",
             data : $("#signup-form").serialize(),
             success : (response) => {
-                console.log('success');
+                console.log(response,'res');
+                if(response.status){
+                    location.href = "/";
+                }
             }
         })
     }else{
@@ -126,7 +129,7 @@ $('document').ready(function(){
             }else{
                 $("#email").css({'margin-bottom':'0'})
                 $("#email-error").html(response.message)
-                $("#email-error").css({'display' : 'block'})
+                $("#email-error").css({'display' : 'block','color':'red'})
                 emailAvailable = false
             }
         }
