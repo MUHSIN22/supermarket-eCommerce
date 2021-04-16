@@ -30,5 +30,11 @@ router.post('/check-email',(req,res) => {
     res.json(data)
   })
 })
-
+router.get('/otp-verify',(req,res) => {
+  if(req.session.userLoggedIn){
+    res.render('user/otp-form',{})
+  }else{
+    res.redirect('/singup')
+  }
+})
 module.exports = router;
