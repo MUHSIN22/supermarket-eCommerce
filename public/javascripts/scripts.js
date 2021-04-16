@@ -76,7 +76,7 @@ $("#signup-form").submit((e)=> {
             success : (response) => {
                 console.log(response,'res');
                 if(response.status){
-                    location.href = "/";
+                    location.href = "/otp-form";
                 }
             }
         })
