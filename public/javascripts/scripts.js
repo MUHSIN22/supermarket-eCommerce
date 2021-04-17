@@ -142,18 +142,3 @@ $('document').ready(function(){
 
 
 
-//login
-
-// $("#login-form").submit((e)=> {
-//     e.preventDefault();
-//     if(1==1){
-//         document.getElementById("form-validation").value = 'validated';
-//         $.ajax({
-//             url : "/login",
-//             method : "post",
-//             data : $("#login-form").serialize(),
-//             success : (response) => {
-//                 console.log('success');
-//             }
-//         })
-//     }})
