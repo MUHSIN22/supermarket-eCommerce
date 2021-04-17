@@ -11,6 +11,9 @@ router.get('/', function(req, res, next) {
   let user = req.session.user //user assigned to global variables
   res.render('user/home',{admin:false,user})
 });
+
+//signup
+
 router.get('/signup',(req,res) => {
   res.render('user/signup',{loginOrSignupPage:true});
 })
@@ -34,12 +37,20 @@ router.post('/check-email',(req,res) => {
     res.json(data)
   })
 })
+
+//signup ends
+
+
+
 router.get('/login',(req,res)=>{
   res.render('user/login',{loginOrSignupPage:true})
 })
 router.post('/login',(req,res)=>{
   console.log(req.body)
 })
+
+// otp verification
+
 router.get('/otp-verify',(req,res) => {
   if(req.session.userLoggedIn){
     let mobile = req.session.user.mobile
@@ -54,10 +65,13 @@ router.get('/otp-verify',(req,res) => {
 })
 router.post('/otp-verify',(req,res) => {
   if(OTP == req.body.otp){
-    res.redirect('/signup');
+    res.redirect('/');
   }else{
     wrong = 'Wrong OTP!'
     res.redirect('/otp-verify')
   }
 })
+
+//otp verification
+
 module.exports = router;
