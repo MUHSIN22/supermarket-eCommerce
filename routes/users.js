@@ -39,20 +39,12 @@ router.post('/check-email',(req,res) => {
 })
 
 //signup ends
-
-
-
 router.get('/login',(req,res)=>{
-  
  if(req.session.userlogin) {
   res.redirect('/')
  }else{res.render('user/login',{"loginErr":req.session.loginErr,loginOrSignupPage:true})
     req.session.loginErr=false
-
 }
-  
-  
-  
 })
 router.post('/login',(req,res)=>{
   userHelpers.doLogin(req.body).then((response)=>{
@@ -67,8 +59,6 @@ router.post('/login',(req,res)=>{
     }
   })
 })
-
-// otp verification
 
 router.get('/otp-verify',(req,res) => {
   if(req.session.userLoggedIn){
