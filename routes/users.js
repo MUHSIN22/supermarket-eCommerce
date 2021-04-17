@@ -35,10 +35,29 @@ router.post('/check-email',(req,res) => {
   })
 })
 router.get('/login',(req,res)=>{
-  res.render('user/login',{loginOrSignupPage:true})
+  
+ if(req.session.userlogin) {
+  res.redirect('/')
+ }else{res.render('user/login',{"loginErr":req.session.loginErr,loginOrSignupPage:true})
+    req.session.loginErr=false
+
+}
+  
+  
+  
 })
 router.post('/login',(req,res)=>{
-  console.log(req.body)
+  userHelpers.doLogin(req.body).then((response)=>{
+    if(response.status){
+      req.session.userlogin=true
+      req.session.user=response.user
+      res.redirect('/')
+
+    }else{
+      req.session.loginErr=true
+      res.redirect('/login')
+    }
+  })
 })
 router.get('/otp-verify',(req,res) => {
   if(req.session.userLoggedIn){

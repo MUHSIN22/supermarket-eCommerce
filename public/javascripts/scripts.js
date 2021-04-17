@@ -132,27 +132,14 @@ $('document').ready(function(){
         }
     })
     })
+
 //signup and email validations end
 
-//login form
-$("#login-form").submit((e)=> {
-    e.preventDefault();
-    if(passwordLengthValidation() && mobileValidate() ){
-        document.getElementById("form-validation").value = 'validated';
-        $.ajax({
-            url : "/login",
-            method : "post",
-            data : $("#login-form").serialize(),
-            success : (response) => {
-                console.log('success');
-            }
-        })
-    }else{
-        console.log('in else');
-        passwordLengthValidation() ;
-        mobileValidate();
-        
-    }
+})
 
-})
-})
+
+
+
+
+
+
