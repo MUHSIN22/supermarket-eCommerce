@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* Importing oswald font */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+:root{
+    --green : #04ca6d;
+    --orange : #dda04f;
+    --dark : #35334a;
+    --light : #f5f5f5;
+    --roboto : 'Roboto', sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--roboto);
+}
+body{
+    background-color: var(--light);
+}
+html{
+    scroll-behavior: smooth;
+}
+header{
+    background-color: var(--dark);
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    padding: 1rem;
+}
+.supermarket-container{
+    text-align: center;
+}
+.supermarket-container h2{
+    color: var(--orange);
+}
+.supermarket-container h2 span{
+    color: var(--green);
+}
+.supermarket-container h5{
+    color: var(--light);
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+}
+main{
+    display: flex;
+}
+.admin-options{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--dark);
+    width: 12rem;
+    height: 92vh;
+    position: sticky;
+}
+.admin-options button{
+    background:none;
+    border: none;
+    color: var(--light);
+    width: 100%;
+    height: 5rem;
+    margin: 0.2rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    outline: none;
+}
+.admin-options button:hover{
+    background-color: var(--light);
+    color: var(--dark);
+}
+.admin-options .active-admin-option{
+    border-left: 2px solid var(--orange);
+}
+.admin-options i{
+     margin-right: 0.2rem;
+}
