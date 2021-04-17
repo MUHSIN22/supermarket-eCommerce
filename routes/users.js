@@ -59,7 +59,6 @@ router.post('/login',(req,res)=>{
     }
   })
 })
-
 router.get('/otp-verify',(req,res) => {
   if(req.session.userLoggedIn){
     let mobile = req.session.user.mobile
