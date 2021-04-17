@@ -1,84 +1,211 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 /* Importing oswald font */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-
-:root{
-    --green : #04ca6d;
-    --orange : #dda04f;
-    --dark : #35334a;
-    --light : #f5f5f5;
-    --roboto : 'Roboto', sans-serif;
+:root {
+  --green: #04ca6d;
+  --orange: #dda04f;
+  --dark: #35334a;
+  --light: #f5f5f5;
+  --roboto: "Roboto", sans-serif;
 }
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: var(--roboto);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--roboto);
+}
+body {
+  background-color: var(--light);
+}
+html {
+  scroll-behavior: smooth;
 }
 body{
     background-color: var(--light);
 }
-html{
-    scroll-behavior: smooth;
+.admin-header {
+  background-color: var(--dark);
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  padding: 1rem;
 }
-header{
-    background-color: var(--dark);
-    width: 100%;
-    height: 8vh;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    position: sticky;
-    z-index: 1000;
-    top: 0;
-    padding: 1rem;
+.supermarket-container {
+  text-align: center;
 }
-.supermarket-container{
-    text-align: center;
+.supermarket-container h2 {
+  color: var(--orange);
 }
-.supermarket-container h2{
-    color: var(--orange);
+.supermarket-container h2 span {
+  color: var(--green);
 }
-.supermarket-container h2 span{
-    color: var(--green);
+.supermarket-container h5 {
+  color: var(--light);
+  font-weight: 400;
+  letter-spacing: 0.1rem;
 }
-.supermarket-container h5{
-    color: var(--light);
-    font-weight: 400;
-    letter-spacing: 0.1rem;
+.admin-main-container {
+  display: flex;
+  width: 100%;
 }
-main{
-    display: flex;
+.admin-options {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--dark);
+  width: 20%;
+  height: 92vh;
+  position: sticky;
 }
-.admin-options{
+.admin-options button {
+  background: none;
+  border: none;
+  color: var(--light);
+  width: 100%;
+  height: 5rem;
+  margin: 0.2rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  outline: none;
+}
+.admin-options button:hover {
+  background-color: var(--light);
+  color: var(--dark);
+}
+.admin-options .active-admin-option {
+  border-left: 2px solid var(--orange);
+}
+.admin-options i {
+  margin-right: 0.2rem;
+}
+.admin-option-card {
+    border-radius: 29px;
+    background: #f5f5f5;
+    box-shadow: 12px 12px 24px #dadada, -12px -12px 24px #ffffff;
+    width: 13rem;
+    height: 13rem;
     display: flex;
     flex-direction: column;
-    background-color: var(--dark);
-    width: 12rem;
-    height: 92vh;
-    position: sticky;
-}
-.admin-options button{
-    background:none;
-    border: none;
-    color: var(--light);
-    width: 100%;
-    height: 5rem;
-    margin: 0.2rem 0;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-    outline: none;
-}
-.admin-options button:hover{
-    background-color: var(--light);
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 1rem;
+    margin: 4rem;
+    text-align: center;
     color: var(--dark);
 }
-.admin-options .active-admin-option{
-    border-left: 2px solid var(--orange);
+.admin-dashboard-container{
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 92vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-bottom: 3rem;
+    display: none;
 }
-.admin-options i{
-     margin-right: 0.2rem;
+.admin-option-card strong{
+    font-size: 1rem;
+}
+.admin-option-card p{
+    font-size: 0.8rem;
+    color: var(--green);
+}
+@media screen and (max-width:818px){
+    .admin-dashboard-container{
+        width: 60%;
+    }
+    .admin-options {
+        width: 40%;
+      }
+}
+.admin-order-container{
+    display: flex;
+    width: 80%;
+    height: 92vh;
+    justify-content: center;
+    align-items: flex-start;
+}
+.order-card-row{
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+
+}
+.admin-order-card {
+	border-radius: 2px;
+	background: #f5f5f5;
+	box-shadow: 12px 12px 24px #dadada, -12px -12px 24px #ffffff;
+	width: 22rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 3rem 1rem;
+	margin: 4rem;
+	text-align: left;
+	color: var(--dark);
+	padding: 2rem;
+}
+.admin-order-card h1{
+    font-size: 1rem;
+    margin:0.3rem 0rem;
+}
+.admin-order-card strong{
+    font-size: 1rem;
+    margin:0.3rem 0rem;
+}
+.admin-order-card p{
+    font-size: 1rem;
+    margin:0.3rem 0rem;
+}
+.admin-order-card button {
+	border: none;
+	background-color: #c82727;
+	border: rad;
+	border-radius: 2px;
+	height: 2rem;
+	color: var(--light);
+	width: 7rem;
+	margin: 1rem 0.2rem;
+	cursor: pointer;
+}
+.admin-order-card .green{
+    background-color: var(--green);
+}
+.btn-admin-order{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+@media screen and (max-width:466px){
+    .admin-order-card {
+        border-radius: 1px;
+        width: 12rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.3rem;
+        margin: 1rem;
+        padding: 1rem;
+    }
+    .admin-order-card button {
+        width: 4.1rem;
+        height: 3rem;
+    }
+    .admin-order-card p {
+        font-size: 0.8rem;
+    }
 }
