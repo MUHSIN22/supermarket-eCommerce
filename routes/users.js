@@ -34,7 +34,8 @@ router.get('/login',(req,res)=>{
   
  if(req.session.userlogin) {
   res.redirect('/')
- }else{res.render('user/login',{loginOrSignupPage:true})
+ }else{res.render('user/login',{"loginErr":req.session.loginErr,loginOrSignupPage:true})
+    req.session.loginErr=false
 
 }
   
@@ -49,6 +50,7 @@ router.post('/login',(req,res)=>{
       res.redirect('/')
 
     }else{
+      req.session.loginErr=true
       res.redirect('/login')
     }
   })
