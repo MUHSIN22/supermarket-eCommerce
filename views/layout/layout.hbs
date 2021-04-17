@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,24 +17,41 @@
     <link rel="stylesheet" href="/stylesheets/admin-header.css">
 
     <link rel="stylesheet" href="/stylesheets/login.css">
-    <script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
     </script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <title>Super market</title>
 </head>
+
 <body>
     {{#if admin}}
-        {{>admin-header}}
+    {{>admin-header}}
     {{else}}
-        {{#if loginOrSignupPage}}
-            {{>user-login-signup-header}}
-        {{else}}
-            {{>user-header}}
-        {{/if}}
+    {{#if loginOrSignupPage}}
+    {{>user-login-signup-header}}
+    {{else}}
+    {{>user-header}}
     {{/if}}
+    {{/if}}
+    {{#if admin}}
+    <main class="admin-main-container">
+        <section class="admin-options">
+            <a href="/admin/"><button id="dashboard"><i class="fas fa-home"></i>Dashboard</button></a>
+            <a href="#"><button id="add-product"><i class="fas fa-plus"></i>Add Products</button></a>
+            <a href="#"><button id="view-product"><i class="far fa-eye"></i>View Products</button></a>
+            <a href="/admin/admin-order"><button id="order-details"><i
+                        class="fas fa-info-circle"></i>OrdersDetails</button></a>
+            <a href="#"><button id="available-locations"><i class="fas fa-map-marked-alt"></i>Available
+                    Locations</button></a>
+            <a href="#"><button id="delivery-person"><i class="fas fa-truck"></i>Delivery Persons</button></a>
+        </section>
     {{{body}}}
+    </main>
+    {{else}}
+    {{{body}}}
+    {{/if}}
     <script src="/javascripts/scripts.js"></script>
     <script src="/javascripts/for-admin-dashboard.js"></script>
 </body>
+
 </html>

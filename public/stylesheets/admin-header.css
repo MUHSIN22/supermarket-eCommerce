@@ -12,6 +12,7 @@
   }
   .supermarket-container {
     text-align: center;
+    width: 20%;
   }
   .supermarket-container h2 {
     color: var(--orange);
@@ -23,4 +24,13 @@
     color: var(--light);
     font-weight: 400;
     letter-spacing: 0.1rem;
+  }
+  .for-heading{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .for-heading h1{
+    color: var(--light);
   }

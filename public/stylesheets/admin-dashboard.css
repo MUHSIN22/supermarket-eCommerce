@@ -75,7 +75,7 @@
         }
   }
   .admin-order-container{
-      display: none;
+      display: flex;
       width: 80%;
       height: 92vh;
       justify-content: center;
