@@ -132,10 +132,9 @@ $('document').ready(function(){
         }
     })
     })
-
 //signup and email validations end
-
 })
+
 
 
 

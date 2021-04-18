@@ -37,7 +37,6 @@ router.post('/check-email',(req,res) => {
     res.json(data)
   })
 })
-
 //signup ends
 router.get('/login',(req,res)=>{
  if(req.session.userlogin) {
