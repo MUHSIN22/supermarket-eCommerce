@@ -2,6 +2,7 @@ var express = require('express');
 const userHelpers = require('../helpers/user-helpers');
 var router = express.Router();
 const otpGenerator = require('otp-generator')
+
 // Global variables
 let OTP,wrong = '';
 //Global varible
@@ -78,7 +79,6 @@ router.post('/otp-verify',(req,res) => {
     res.redirect('/otp-verify')
   }
 })
-
 //otp verification
 
 module.exports = router;
