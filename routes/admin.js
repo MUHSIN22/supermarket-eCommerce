@@ -22,7 +22,6 @@ router.post('/add-product',uploadController.multipleUpload,productMaker.productO
   productHelpers.addProduct(res.locals.formDetails).then((response)=>{
     console.log(response.message);
   })
-
 })
 module.exports = router;
 
