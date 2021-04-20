@@ -1,7 +1,10 @@
 const { on } = require('cluster');
 var express = require('express');
+const { response } = require('../app');
 var router = express.Router();
-var uploadController = require('../controllers/upload')
+var uploadController = require('../controllers/upload');
+const productHelpers = require('../helpers/productHelpers');
+var productMaker = require('../middleware/productMaker')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -15,12 +18,10 @@ router.get('/admin-order',(req,res) =>{
 router.get('/add-product',(req,res) => {
   res.render('admin/admin-add-product',{admin:true})
 })
-router.post('/add-product',uploadController.multipleUpload, (req,res) => {
-  let productDetails = {}
-  let formDetails = req.body;
-   console.log(req.body);
-   if(formDetails.pricing == 'default-pricing'){
-   }
+router.post('/add-product',uploadController.multipleUpload,productMaker.productObject, (req,res) => {
+  productHelpers.addProduct(res.locals.formDetails).then((response)=>{
+    console.log(response.message);
+  })
 
 })
 module.exports = router;

@@ -32,4 +32,10 @@ $('document').ready(function () {
             $('#image-preview').append("<img src='"+URL.createObjectURL(event.target.files[i])+"'>");
         }
     })
+    $('.customMeasure').html('piece')
+    var customMeasureUnit = $('#custom-measure-unit')
+    customMeasureUnit.on('change',function(){
+        console.log('changed');
+        $('.customMeasure').html(customMeasureUnit.val())
+    })
 })
