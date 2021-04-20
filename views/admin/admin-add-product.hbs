@@ -1,16 +1,16 @@
 <section class="add-product-page">
-    <form class="add-product-page-container" enctype="multipart/form-data">
+    <form class="add-product-page-container" action="/admin/add-product" method="POST" enctype="multipart/form-data">
         <div class="upload-product-heading">
             <h1>Upload Products</h1>
         </div>
         <div class="product-name-and-category">
             <label for="prouduct-name">Name</label>
-            <input type="text" name="prouduct-name" id="prouduct-name" class="prouduct-name" />
+            <input required type="text" name="prouductName" id="prouduct-name" class="prouduct-name" />
             <div class="category-and-stock">
                 <button class="product-category" id="product-category">Select a Category<i class="fas fa-sort-down"></i></button>
                 <div class="stock">
                     <label for="available-stock">Available Stock</label>
-                    <input type="text" name="available-stock" class="available-stock" id="available-stock" />
+                    <input type="text" name="availableStock" class="available-stock" required id="available-stock" />
                 </div>
             </div>
             <input type="text" class="category-save" name="category" hidden>
@@ -28,13 +28,13 @@
             </ul>
         </div>
         <div class="radio-labels">
-            <input type="radio" name="pricing" class="pricing" id="default-pricing" value="default-pricing" />
+            <input type="radio" name="pricing" required class="pricing" id="default-pricing" value="default-pricing" />
             <h6>Default Pricing</h6>
-            <input type="radio" name="pricing" class="pricing" id="custom-pricing" value="Customize Pricing">
+            <input type="radio" name="pricing" required class="pricing" id="custom-pricing" value="Customize Pricing">
             <h6>Customize Pricing</h6>
         </div>
         <div class="product-price-container">
-                <input type="text" placeholder="Enter price" name="product-price" id="product-price"
+                <input type="text"  placeholder="Enter price" name="productPrice" id="product-price"
                 class="product-price" />
             <div class="radio-labels">
                 <input type="radio" name="measure" value="/piece" id="measure" />
@@ -51,10 +51,10 @@
         </div>
         <div class="product-custom-prize-container">
             <div class="custom-price-div">
-                <input type="text" placeholder="Enter Price" class="product-custom-price">
+                <input type="text" name="productCustomPrice" placeholder="Enter Price" class="product-custom-price">
                 <h6>for</h6>
-                <input type="text" placeholder="Enter Quantity" class="custom-measure">
-                <select name="custom-measure-unit" id="custom-measure-unit">
+                <input type="text" name="customQuantity" placeholder="Enter Quantity" class="custom-measure">
+                <select name="customMeasureUnit" id="custom-measure-unit">
                     <option value="piece">piece</option>
                     <option value="kg">Kg</option>
                     <option value="litre">litre</option>
@@ -62,48 +62,33 @@
                 </select>
             </div>
             <div>
-                <input type="text" placeholder="Enter Price" class="product-custom-price">
+                <input type="text" name="productCustomPrice" placeholder="Enter Price"  class="product-custom-price">
                 <h6>for</h6>
-                <input type="text" placeholder="Enter Quantity" class="custom-measure">
-                <select name="custom-measure-unit" id="custom-measure-unit">
-                    <option value="piece">piece</option>
-                    <option value="kg">Kg</option>
-                    <option value="litre">litre</option>
-                    <option value="ml">ml</option>
-                </select>
+                <input type="text" name="customQuantity" placeholder="Enter Quantity" class="custom-measure">
+                <h6 class="customMeasure"></h6>
             </div>
             <div>
-                <input type="text" placeholder="Enter Price" class="product-custom-price">
+                <input type="text" name="productCustomPrice" placeholder="Enter Price" class="product-custom-price">
                 <h6>for</h6>
-                <input type="text" placeholder="Enter Quantity" class="custom-measure">
-                <select name="custom-measure-unit" id="custom-measure-unit">
-                    <option value="piece">piece</option>
-                    <option value="kg">Kg</option>
-                    <option value="litre">litre</option>
-                    <option value="ml">ml</option>
-                </select>
+                <input type="text" name="customQuantity" placeholder="Enter Quantity" class="custom-measure">
+                <h6 class="customMeasure"></h6>
             </div>
             <div>
-                <input type="text" placeholder="Enter Price" class="product-custom-price">
+                <input type="text" name="productCustomPrice" placeholder="Enter Price" class="product-custom-price">
                 <h6>for</h6>
-                <input type="text" placeholder="Enter Quantity" class="custom-measure">
-                <select name="custom-measure-unit" id="custom-measure-unit">
-                    <option value="piece">piece</option>
-                    <option value="kg">Kg</option>
-                    <option value="litre">litre</option>
-                    <option value="ml">ml</option>
-                </select>
+                <input type="text" name="customQuantity" placeholder="Enter Quantity" class="custom-measure">
+                <h6 class="customMeasure"></h6>
             </div>
         </div>
         <div class="image-upload">
             <div><h5>Add Images</h5></div>
-            <input type="file" name="images" id="images" class="images" multiple value="Add images">
+            <input type="file" name="multipleImages" id="images" class="images" required multiple>
             <div class="image-preview" id="image-preview"></div>
         </div>
         <div class="product-description-container">
             <label for="description">Description</label>
-            <textarea name="description" class="description" placeholder="Description 1"></textarea>
-            <textarea name="description" class="description" placeholder="Description 2"></textarea>
+            <textarea name="description" class="description" placeholder="Description 1" required></textarea>
+            <textarea name="description" class="description" placeholder="Description 2" required></textarea>
             <textarea name="description" class="description" placeholder="Description 3"></textarea>
             <textarea name="description" class="description" placeholder="Description 4"></textarea>
             <textarea name="description" class="description" placeholder="Description 5"></textarea>

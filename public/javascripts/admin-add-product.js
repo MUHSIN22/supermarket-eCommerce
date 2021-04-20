@@ -30,21 +30,12 @@ $('document').ready(function () {
         var totalImages = $('.images').length;
         for(var i=0;i<totalImages;i++){
             $('#image-preview').append("<img src='"+URL.createObjectURL(event.target.files[i])+"'>");
-            $('#image-preview').append(`<input type="text" name="images" value="${ this.value }" hidden/>`)
         }
     })
-})
-
-$('.add-product-page-container').submit((event) => {
-    event.preventDefault();
-    const productDetails = $('.add-product-page-container').serialize()
-    $.ajax({
-        url:'/admin/add-product',
-        method : 'post',
-        data : productDetails,
-        success : (response)=>{
-
-        }
+    $('.customMeasure').html('piece')
+    var customMeasureUnit = $('#custom-measure-unit')
+    customMeasureUnit.on('change',function(){
+        console.log('changed');
+        $('.customMeasure').html(customMeasureUnit.val())
     })
 })
-
