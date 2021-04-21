@@ -132,7 +132,7 @@
 .categories-card button {
 	border: none;
 	background-color: var(--orange);
-	width: 8rem;
+	width: 10rem;
 	height: 2.5rem;
 	font-size: 1rem;
 	font-weight: 500;
@@ -142,6 +142,8 @@
     .categories-card button {
         width: 6rem;
         height: 2rem;
+        font-size: 0.9rem;
+        font-weight: 400;
     }
     .categories-card {
         width: 8rem;

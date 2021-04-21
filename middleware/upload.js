@@ -1,4 +1,5 @@
 const util = require("util");
+const path = require("path");
 const multer = require("multer");
 
 var storage = multer.diskStorage({
@@ -13,7 +14,7 @@ var storage = multer.diskStorage({
       return callback(message, null);
     }
 
-    var filename = `${Date.now()}-supermarket-${file.originalname}`;
+    var filename = `${Date.now()}-supermarket-product-${file.originalname}`;
     callback(null, filename);
   }
 });
