@@ -1,0 +1,27 @@
+<main>
+        <div class="product-main-container product-center">
+            {{#if products}}
+            {{#each products}}
+            <div class="product-card">
+                <div class="image">
+                    <img src="/images/product-images/{{this.images.[1]}}" alt="">
+                </div>
+                <div class="card-body margin-bottom">
+                    <div class="name">
+                        {{this.prouductName}}
+                    </div>
+                    <div class="price margin-top margin-bottom">
+                        <strong>₹{{this.productPrice}}</strong>
+                    </div>
+                    <div class="wishlist-and-add margin-top">
+                        <i class="far fa-heart"></i>
+                        <a href="#"><button>Add to cart</button></a>
+                    </div>
+                </div>          
+            </div>
+            {{/each}}
+            {{else}}
+            <h6>No products availble in this category</h6>
+            {{/if}}
+        </div>
+    </main>

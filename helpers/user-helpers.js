@@ -68,11 +68,5 @@ module.exports = {
             
         })
     },
-    getProductForHomePageCards : () =>{
-        return new Promise( async(resolve,reject) => {
-            let products = await db.get().collection(collections.PRODUCT_COLLECTION).find().sort({_id:-1}).limit(15).toArray()
-            resolve(products)
-        })
-    }
 };
 

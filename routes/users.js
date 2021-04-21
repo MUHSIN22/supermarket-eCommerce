@@ -1,7 +1,9 @@
 var express = require('express');
 const userHelpers = require('../helpers/user-helpers');
 var router = express.Router();
-const otpGenerator = require('otp-generator')
+const otpGenerator = require('otp-generator');
+const productHelpers = require('../helpers/productHelpers');
+const { Db } = require('mongodb');
 
 // Global variables
 let OTP,wrong = '';
@@ -10,8 +12,7 @@ let OTP,wrong = '';
 /* GET users listing. */
 router.get('/', async (req, res, next)=> {
   let user = req.session.user 
-  userHelpers.getProductForHomePageCards().then((products) => {
-    console.log(products);
+  productHelpers.getProductForHomePageCards().then((products) => {
     res.render('user/home',{admin:false,user,products})
   })
 });
@@ -84,4 +85,15 @@ router.post('/otp-verify',(req,res) => {
 })
 //otp verification
 
+router.get('/products',(req,res)=> {
+  console.log(req.query.category);
+  productHelpers.getProductByCategory(req.query.category).then((products) => {
+    if(products.length==0){
+      res.render('user/product-page')
+    }else{
+      res.render('user/product-page',{products})
+    }
+  })
+  
+})
 module.exports = router;
