@@ -197,7 +197,7 @@
 	/* background-color: yel; */
 	display: flex;
 	flex-direction: column;
-	justify-content: stretch;
+	justify-content:  space-between;
 	align-items: flex-start;
 	flex-wrap: wrap;
     margin: 1rem 0;
@@ -217,6 +217,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 0.5rem;
+    width: 100%;
 }
 .wishlist-and-add {
 	display: flex;

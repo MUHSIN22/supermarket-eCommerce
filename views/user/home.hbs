@@ -65,23 +65,27 @@
             <h1>Products For You</h1>
         </div>
         <div class="special-offers">
+            {{#each products}}
             <div class="product-card">
                 <div class="image">
-                    <img src="../71Cgh7YiE1L._SL1500_.jpg" alt="">
+                    <img src="/images/product-images/{{this.images.[1]}}" alt="">
                 </div>
-                <div class="card-body margin-bottom">
+                <div style="padding: .2rem;">
                     <div class="name">
-                        Saffola Oodles, Ring Noodles, Yummy Masala Flavour, No Maida, 3 x 184g Pouch (12 Packs)
+                        {{this.prouductName}}
                     </div>
                     <div class="price margin-top margin-bottom">
-                        <strong>₹40.00</strong>
+                        <strong>{{this.productPrice}}</strong>
                     </div>
+                </div>
+                <div class="card-body margin-bottom">
                     <div class="wishlist-and-add margin-top">
                         <i class="far fa-heart"></i>
                         <a href="#"><button>Add to cart</button></a>
                     </div>
                 </div>
             </div>
+            {{/each}}
         </div>
     </section>
 </section>
