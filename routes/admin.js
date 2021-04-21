@@ -21,6 +21,7 @@ router.get('/add-product',(req,res) => {
 router.post('/add-product',uploadController.saveProductImages,productMaker.productObject, (req,res) => {
   productHelpers.addProduct(res.locals.formDetails).then((response)=>{
     console.log(response.message);
+    res.redirect('/admin/add-product');
   })
 })
 module.exports = router;

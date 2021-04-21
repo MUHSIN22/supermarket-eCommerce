@@ -8,9 +8,12 @@ let OTP,wrong = '';
 //Global varible
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  let user = req.session.user //user assigned to global variables
-  res.render('user/home',{admin:false,user})
+router.get('/', async (req, res, next)=> {
+  let user = req.session.user 
+  userHelpers.getProductForHomePageCards().then((products) => {
+    console.log(products);
+    res.render('user/home',{admin:false,user,products})
+  })
 });
 
 //signup

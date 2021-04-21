@@ -2,7 +2,7 @@ const upload = require("../middleware/upload");
 
 const multipleUpload = async (req, res,next) => {
   try {
-    await upload.uploadFilesMiddleware(req, res);
+    await upload(req, res);
     let image = req.files
     if (req.files.length <= 0) {
       return res.send(`You must select at least 1 file.`);
