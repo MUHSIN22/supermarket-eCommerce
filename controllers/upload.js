@@ -2,7 +2,7 @@ const upload = require("../middleware/upload");
 
 const multipleUpload = async (req, res,next) => {
   try {
-    await upload(req, res);
+    await upload.uploadFilesMiddleware(req, res);
     let image = req.files
     if (req.files.length <= 0) {
       return res.send(`You must select at least 1 file.`);
@@ -19,5 +19,5 @@ const multipleUpload = async (req, res,next) => {
 };
 
 module.exports = {
-  multipleUpload: multipleUpload
+    saveProductImages: multipleUpload
 };

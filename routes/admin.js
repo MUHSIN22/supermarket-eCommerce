@@ -18,7 +18,7 @@ router.get('/admin-order',(req,res) =>{
 router.get('/add-product',(req,res) => {
   res.render('admin/admin-add-product',{admin:true})
 })
-router.post('/add-product',uploadController.multipleUpload,productMaker.productObject, (req,res) => {
+router.post('/add-product',uploadController.saveProductImages,productMaker.productObject, (req,res) => {
   productHelpers.addProduct(res.locals.formDetails).then((response)=>{
     console.log(response.message);
   })
