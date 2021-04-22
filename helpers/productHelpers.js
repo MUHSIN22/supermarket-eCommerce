@@ -12,22 +12,22 @@ module.exports = {
     },
     getProductForHomePageCards : (userLoggedIn,userId) =>{
         return new Promise( async(resolve,reject) => {
-            let products = await db.get().collection(collection.PRODUCT_COLLECTION).find().sort({_id:-1}).limit(15).toArray() 
             if(userLoggedIn){
-                console.log(userId);
-                let user = await db.get().collection(collection.USER_COLLECTION).findOne({_id : ObjectId(userId)})
-                console.log(user.wishlist);
-                if(user.wishlist){
-                    for(var i = 0;i<user.wishlist.length;i++){
-                        for(var j=0;j<products.length;j++){
-                            if(products[j]._id==user.wishlist[i]){
-                                products[j].wishlist = true;
-                            }
+                let products = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+                    {
+                        $lookup:{
+                            from:collection.WISHLIST_COLLECTION,
+                            localField:'_id',
+                            foreignField:'wishlist',
+                            as:'wishlist'
                         }
                     }
-                }
+                ]).sort({_id:-1}).limit(15).toArray()
+                resolve(products)
+            }else{
+                let products = await db.get().collection(collection.PRODUCT_COLLECTION).find().sort({_id:-1}).limit(15).toArray() 
+                resolve(products)
             }
-            resolve(products)
         })
     },
     getProductByCategory : (category) => {

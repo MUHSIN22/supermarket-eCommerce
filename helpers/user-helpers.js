@@ -71,30 +71,22 @@ module.exports = {
     },
     updateuserWishlist : (userId,proId) => {
         return new Promise(async(resolve,reject) => {
-            let user = await db.get().collection(collections.USER_COLLECTION).findOne({_id:ObjectId(userId)})
-            let wishlist = user.wishlist
-            let productExist;
-            if(wishlist){
-                for(var i=0;i<wishlist.length;i++){
-                    if(wishlist[i] == proId){
-                        productExist = true;
-                    }
-                }
+            let wishlist = {
+                user:ObjectId(userId),
+                wishlist:ObjectId(proId)
             }
-            if(productExist){
-                db.get().collection(collections.USER_COLLECTION).updateOne({_id:ObjectId(userId)},
-                {$pull:{wishlist:proId}}).then(()=> {
-                    console.log('product removed from wishlist');
+            console.log(wishlist);
+            let wishlistExist = await db.get().collection(collections.WISHLIST_COLLECTION).findOne({user:ObjectId(userId),wishlist:ObjectId(proId)})
+            console.log('wishExist',wishlistExist);
+            if(wishlistExist){
+                db.get().collection(collections.WISHLIST_COLLECTION).removeOne({user:ObjectId(userId),wishlist:ObjectId(proId)}).then(()=>{
                     resolve(true)
                 })
             }else{
-                db.get().collection(collections.USER_COLLECTION).updateOne({_id:ObjectId(userId)},
-                {$push:{wishlist:proId}}).then(()=> {
-                    console.log('added to wishlist');
+                db.get().collection(collections.WISHLIST_COLLECTION).insertOne(wishlist).then(()=>{
                     resolve(true)
                 })
             }
-            
         })
     }
 };

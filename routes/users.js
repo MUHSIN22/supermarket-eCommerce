@@ -52,7 +52,7 @@ router.get('/login', (req, res) => {
   if (req.session.userLoggedIn) {
     res.redirect('/')
   } else {
-    res.render('user/login', { "loginErr": req.session.loginErr, loginOrSignupPage: true})
+    res.render('user/login', { "loginErr": req.session.loginErr, loginOrSignupPage: true })
     req.session.loginErr = false
   }
 })
@@ -62,7 +62,6 @@ router.post('/login', (req, res) => {
       req.session.userLoggedIn = true
       req.session.user = response.user
       res.redirect('/')
-
     } else {
       req.session.loginErr = true
       res.redirect('/login')
@@ -111,9 +110,7 @@ router.post('/otp-verify', (req, res) => {
 //otp verification
 router.post('/add-or-remove-wishlist',(req, res) => {
   if(req.session.userLoggedIn) {
-    console.log(req.session.user._id);
     userHelpers.updateuserWishlist(req.session.user._id, req.body.product).then((data) => {
-      console.log(data);
       res.json({ status: true })
     })
   }else{ 
