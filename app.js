@@ -6,6 +6,7 @@ var fileUpload = require('express-fileupload')
 var logger = require('morgan');
 const hbs = require('express-handlebars')
 const session = require('express-session')
+const flash = require('connect-flash')
 
 var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
@@ -23,6 +24,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(flash())
 
 app.use(session({secret:"secret key here",cookie:{maxAge:60000}}))
 

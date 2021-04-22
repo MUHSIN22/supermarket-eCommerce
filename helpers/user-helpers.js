@@ -72,12 +72,29 @@ module.exports = {
     updateuserWishlist : (userId,proId) => {
         return new Promise(async(resolve,reject) => {
             let user = await db.get().collection(collections.USER_COLLECTION).findOne({_id:ObjectId(userId)})
-            console.log(user.wishlist);
+            let wishlist = user.wishlist
+            let productExist;
+            if(wishlist){
+                for(var i=0;i<wishlist.length;i++){
+                    if(wishlist[i] == proId){
+                        productExist = true;
+                    }
+                }
+            }
+            if(productExist){
+                db.get().collection(collections.USER_COLLECTION).updateOne({_id:ObjectId(userId)},
+                {$pull:{wishlist:proId}}).then(()=> {
+                    console.log('product removed from wishlist');
+                    resolve(true)
+                })
+            }else{
+                db.get().collection(collections.USER_COLLECTION).updateOne({_id:ObjectId(userId)},
+                {$push:{wishlist:proId}}).then(()=> {
+                    console.log('added to wishlist');
+                    resolve(true)
+                })
+            }
             
-            db.get().collection(collections.USER_COLLECTION).updateOne({_id:ObjectId(userId)},
-            {$push:{wishlist:proId}}).then(()=> {
-                resolve(true)
-            })
         })
     }
 };

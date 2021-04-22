@@ -80,7 +80,11 @@
                 </div>
                 <div class="card-body margin-bottom">
                     <div class="wishlist-and-add margin-top">
+                        {{#if this.wishlist}}
+                        <i class="far fa-heart heart fas" id="{{this._id}}"></i>
+                        {{else}}
                         <i class="far fa-heart heart" id="{{this._id}}"></i>
+                        {{/if}}
                         <a href="#"><button>Add to cart</button></a>
                     </div>
                 </div>

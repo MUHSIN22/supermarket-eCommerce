@@ -15,7 +15,6 @@ module.exports.productObject= (req,res,next) => {
   }
   formDetails.images = images;
 //   console.log(formDetails);
-
   res.locals.formDetails = formDetails
   next()
 }

@@ -10,10 +10,23 @@ module.exports = {
             })
         })
     },
-    getProductForHomePageCards : (userLoggedIn) =>{
+    getProductForHomePageCards : (userLoggedIn,userId) =>{
         return new Promise( async(resolve,reject) => {
-            let products = await db.get().collection(collection.PRODUCT_COLLECTION).find().sort({_id:-1}).limit(15).toArray()  
-            console.log('userLoggedIn',userLoggedIn); 
+            let products = await db.get().collection(collection.PRODUCT_COLLECTION).find().sort({_id:-1}).limit(15).toArray() 
+            if(userLoggedIn){
+                console.log(userId);
+                let user = await db.get().collection(collection.USER_COLLECTION).findOne({_id : ObjectId(userId)})
+                console.log(user.wishlist);
+                if(user.wishlist){
+                    for(var i = 0;i<user.wishlist.length;i++){
+                        for(var j=0;j<products.length;j++){
+                            if(products[j]._id==user.wishlist[i]){
+                                products[j].wishlist = true;
+                            }
+                        }
+                    }
+                }
+            }
             resolve(products)
         })
     },
