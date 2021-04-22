@@ -67,27 +67,29 @@
         <div class="special-offers">
             {{#each products}}
             <div class="product-card">
-                <div class="image">
-                    <img src="/images/product-images/{{this.images.[1]}}" alt="">
-                </div>
-                <div style="padding: .2rem;">
-                    <div class="name">
-                        {{this.prouductName}}
+                <a href="/product-details/{{this._id}}" style="text-decoration: none;color: var(--dark);">
+                    <div class="image">
+                        <img src="/images/product-images/{{this.images.[1]}}" alt="">
                     </div>
-                    <div class="price margin-top margin-bottom">
-                        <strong>{{this.productPrice}}</strong>
+                    <div style="padding: .2rem;">
+                        <div class="">
+                            {{this.prouductName}}
+                        </div>
+                        <div class="price margin-top margin-bottom">
+                            <strong>{{this.productPrice}}</strong>
+                        </div>
                     </div>
-                </div>
-                <div class="card-body margin-bottom">
-                    <div class="wishlist-and-add margin-top">
-                        {{#if this.wishlist.[0]}}
-                        <i class="far fa-heart heart fas" id="{{this._id}}"></i>
-                        {{else}}
-                        <i class="far fa-heart heart" id="{{this._id}}"></i>
-                        {{/if}}
-                        <a href="#"><button>Add to cart</button></a>
+                    <div class="card-body margin-bottom">
+                        <div class="wishlist-and-add margin-top">
+                            {{#if this.wishlist.[0]}}
+                            <i class="far fa-heart heart fas" id="{{this._id}}"></i>
+                            {{else}}
+                            <i class="far fa-heart heart" id="{{this._id}}"></i>
+                            {{/if}}
+                            <a href="#"><button>Add to cart</button></a>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             {{/each}}
         </div>

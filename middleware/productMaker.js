@@ -8,7 +8,6 @@ module.exports.productObject= (req,res,next) => {
     delete formDetails.customMeasureUnit
     delete formDetails.productCustomPrice
     delete formDetails.customQuantity
-
   }else{
     delete formDetails.measure
     delete formDetails.productPrice

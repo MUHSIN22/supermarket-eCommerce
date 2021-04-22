@@ -68,7 +68,14 @@ router.post('/login', (req, res) => {
     }
   })
 })
-
+router.get('/product-details/:id',(req,res) =>{
+  console.log(req.params.id);
+  productHelpers.getProductById(req.params.id).then((product)=>{
+    productHelpers.getProductByCategory(product.category).then((productByCategory) => {
+      res.render('user/product-details-page',{product,productByCategory})
+    })
+  })
+})
 
 
 

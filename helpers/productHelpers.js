@@ -32,10 +32,15 @@ module.exports = {
     },
     getProductByCategory : (category) => {
         return new Promise( async(resolve,reject) => {
-            console.log('category =' , category);
             let products = await db.get().collection(collection.PRODUCT_COLLECTION).find({category:category}).toArray()
-            console.log(products);
             resolve(products)
+        })
+    },
+    getProductById : (proId) => {
+        return new Promise((resolve,reject) => {
+            db.get().collection(collection.PRODUCT_COLLECTION).findOne({_id: ObjectId(proId)}).then((product) => {
+                resolve(product)
+            })
         })
     }
 }

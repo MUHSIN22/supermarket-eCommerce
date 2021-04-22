@@ -1,0 +1,95 @@
+<main>
+        <div class="main-container">
+            <section class="product-details-container">
+                <div class="product-image-section">
+                    {{#each product.images}}
+                    <img src="/images/product-images/{{this}}" alt="" class="product-image-carousel fade">
+                    {{/each}}
+                    <div class="right-arrow" onclick="slideChange(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="left-arrow" onclick="slideChange(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                </div>
+                <div class="product-details-section">
+                    <div class="product-name">
+                        <h4>{{product.prouductName}}</h4>
+                    </div>
+                    <div class="price">
+                        <strong>{{product.productPrice}}</strong>
+                    </div>
+                    <div class="delivery">
+                        <p>In Stock</p>
+                        <p>Free delivery upto 10km</p>
+                    </div>
+                    <div class="description">
+                        <h4>Description</h4>
+                        <ul>
+                            {{#each product.description}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div class="buttons">
+                        <button class="add">Add to cart</button>
+                        <button class="buy">Buy now</button>
+                    </div>
+                </div>
+            </section>
+            <section class="similiar-products-container">
+                <div class="similiar-products-heading">
+                    <h1>Similiar Products</h1>
+                </div>
+                <div class="similiar-products">
+                    {{#each productByCategory}}
+                    <div class="product-card">
+                        <a href="/product-details/{{this._id}}" style="text-decoration: none;color: var(--dark);">
+                        <div class="image">
+                            <img src="/images/product-images/{{this.images.[0]}}" alt="">
+                        </div>
+                        <div class="card-body margin-bottom">
+                            <div class="name">
+                                {{this.prouductName}}
+                            </div>
+                            <div class="price margin-top margin-bottom">
+                                <strong>₹{{this.productPrice}}</strong>
+                            </div>
+                            <div class="wishlist-and-add margin-top">
+                                <i class="far fa-heart"></i>
+                                <a href="#"><button>Add to cart</button></a>
+                            </div>
+                        </div>  
+                        </a>        
+                    </div>
+                    {{/each}}
+                </div>
+            </section>
+        </div>
+    </main>
+    <script>
+        var slideIndex = 0;
+        var right = false;
+        carouselSlide(slideIndex);
+        function slideChange(n){
+            if(n==1){
+                right = true;
+            }
+            slideIndex = slideIndex + n;
+            carouselSlide(slideIndex)
+        }
+        function carouselSlide(n){
+            var i;
+            var slides = document.getElementsByClassName("product-image-carousel")
+            if(n>slides.length -1){
+                slideIndex = 0;
+            }
+            if(n<0){
+                slideIndex = slides.length -1;
+            }
+            for(i=0;i<slides.length;i++){
+                slides[i].style.display = "none"
+            }
+            slides[slideIndex].style.display = "block"
+        }
+    </script>

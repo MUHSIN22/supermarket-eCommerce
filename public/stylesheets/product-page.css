@@ -1,5 +1,5 @@
 /* Main section styles */
-.product-main-container {
+/* .product-main-container {
 	padding: 1rem 10rem;
 	display: flex;
 	justify-content: space-between;
@@ -7,7 +7,6 @@
 }
 .product-card {
 	width: 250px;
-	/* background-color: yel; */
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -67,5 +66,5 @@
         padding: 0.1rem;
         margin-top: 1rem;
     }
-}
+} */
 /* Main section styles */
