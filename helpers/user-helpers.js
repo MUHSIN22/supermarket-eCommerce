@@ -1,6 +1,7 @@
 const db = require('../config/connection');
 const collections = require('../config/collections');
 const bcrypt = require('bcrypt');
+const { ObjectId } = require('mongodb');
 
 module.exports = {
     doSignup: (userDetails) => {
@@ -68,5 +69,15 @@ module.exports = {
             
         })
     },
+    updateuserWishlist : (userId,proId) => {
+        return new Promise(async(resolve,reject) => {
+            let user = await db.get().collection(collections.USER_COLLECTION).findOne({_id:ObjectId(userId)})
+            console.log(user.wishlist);
+            
+            db.get().collection(collections.USER_COLLECTION).updateOne({_id:ObjectId(userId)},
+            {$push:{wishlist:proId}}).then(()=> {
+                resolve(true)
+            })
+        })
+    }
 };
-

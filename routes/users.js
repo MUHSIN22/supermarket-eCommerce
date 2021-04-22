@@ -12,7 +12,7 @@ let OTP,wrong = '';
 /* GET users listing. */
 router.get('/', async (req, res, next)=> {
   let user = req.session.user 
-  productHelpers.getProductForHomePageCards().then((products) => {
+  productHelpers.getProductForHomePageCards(req.session.userLoggedIn).then((products) => {
     res.render('user/home',{admin:false,user,products})
   })
 });
@@ -30,6 +30,23 @@ router.post('/signup',(req,res) => {
     res.json({status:true})
   })
 })
+router.get('/products',(req,res)=> {
+  console.log(req.query.category);
+  productHelpers.getProductByCategory(req.query.category).then((products) => {
+    if(products.length==0){
+      res.render('user/product-page')
+    }else{
+      res.render('user/product-page',{products})
+    }
+  })
+})
+
+
+
+
+
+// --------------------------------------Ajax-------------------------------------------------------------
+
 router.post('/check-mobile',(req,res)=> {
   console.log(req.body);
   userHelpers.checkMobile(req.body).then((data) => {
@@ -53,8 +70,8 @@ router.get('/login',(req,res)=>{
 router.post('/login',(req,res)=>{
   userHelpers.doLogin(req.body).then((response)=>{
     if(response.status){
-      req.session.userlogin=true
-      req.session.user=response.user
+      req.session.userLoggedIn =true
+      req.session.user = response
       res.redirect('/')
 
     }else{
@@ -84,16 +101,11 @@ router.post('/otp-verify',(req,res) => {
   }
 })
 //otp verification
-
-router.get('/products',(req,res)=> {
-  console.log(req.query.category);
-  productHelpers.getProductByCategory(req.query.category).then((products) => {
-    if(products.length==0){
-      res.render('user/product-page')
-    }else{
-      res.render('user/product-page',{products})
-    }
+router.post('/add-or-remove-wishlist',(req,res)=>{
+  console.log(req.session.user._id);
+  userHelpers.updateuserWishlist(req.session.user._id,req.body.product).then((data) => {
+    console.log(data);
   })
-  
 })
+// --------------------------------------Ajax-------------------------------------------------------------
 module.exports = router;

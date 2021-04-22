@@ -1,5 +1,6 @@
 var db = require('../config/connection')
 var collection = require('../config/collections')
+const { ObjectId } = require('mongodb')
 
 module.exports = {
     addProduct : (productDetails) =>{
@@ -9,9 +10,10 @@ module.exports = {
             })
         })
     },
-    getProductForHomePageCards : () =>{
+    getProductForHomePageCards : (userLoggedIn) =>{
         return new Promise( async(resolve,reject) => {
-            let products = await db.get().collection(collection.PRODUCT_COLLECTION).find().sort({_id:-1}).limit(15).toArray()
+            let products = await db.get().collection(collection.PRODUCT_COLLECTION).find().sort({_id:-1}).limit(15).toArray()  
+            console.log('userLoggedIn',userLoggedIn); 
             resolve(products)
         })
     },
