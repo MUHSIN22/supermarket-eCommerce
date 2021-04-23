@@ -67,18 +67,17 @@
         <div class="special-offers">
             {{#each products}}
             <div class="product-card">
-                <a href="/product-details/{{this._id}}" style="text-decoration: none;color: var(--dark);">
-                    <div class="image">
+                    <a href="/product-details/{{this._id}}" style="text-decoration: none;color: var(--dark);" class="image">
                         <img src="/images/product-images/{{this.images.[1]}}" alt="">
-                    </div>
-                    <div style="padding: .2rem;">
+                    </a>
+                    <a href="/product-details/{{this._id}}" style="text-decoration: none;color: var(--dark);padding: .2rem;">
                         <div class="">
                             {{this.prouductName}}
                         </div>
                         <div class="price margin-top margin-bottom">
                             <strong>{{this.productPrice}}</strong>
                         </div>
-                    </div>
+                    </a>
                     <div class="card-body margin-bottom">
                         <div class="wishlist-and-add margin-top">
                             {{#if this.wishlist.[0]}}
@@ -89,7 +88,7 @@
                             <a href="#"><button>Add to cart</button></a>
                         </div>
                     </div>
-                </a>
+                
             </div>
             {{/each}}
         </div>

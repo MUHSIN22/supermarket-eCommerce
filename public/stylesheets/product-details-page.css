@@ -74,10 +74,9 @@
 }
 .product-card {
 	width: 250px;
-	/* background-color: yel; */
 	display: flex;
 	flex-direction: column;
-	justify-content: stretch;
+	justify-content: space-between;
 	align-items: flex-start;
 	flex-wrap: wrap;
     margin: 1rem 0;

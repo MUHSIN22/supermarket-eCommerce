@@ -42,5 +42,29 @@ module.exports = {
                 resolve(product)
             })
         })
+    },
+    getProductByWishlist : (userId) => {
+        return new Promise(async (resolve,reject) => {
+            let products = await db.get().collection(collection.WISHLIST_COLLECTION).aggregate([
+                {
+                    $match:{user:ObjectId(userId)}
+                },
+                {
+                    $lookup:{
+                        from : collection.PRODUCT_COLLECTION,
+                        localField : 'wishlist',
+                        foreignField : '_id',
+                        as : 'productDetails'
+                    }
+                },
+                {
+                    $unwind:'$productDetails'
+                },
+                {
+                    $project : {product:'$productDetails'}
+                }
+            ]).toArray()
+            resolve(products)
+        })
     }
 }

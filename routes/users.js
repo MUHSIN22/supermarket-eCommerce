@@ -69,14 +69,17 @@ router.post('/login', (req, res) => {
   })
 })
 router.get('/product-details/:id',(req,res) =>{
-  console.log(req.params.id);
   productHelpers.getProductById(req.params.id).then((product)=>{
     productHelpers.getProductByCategory(product.category).then((productByCategory) => {
       res.render('user/product-details-page',{product,productByCategory})
     })
   })
 })
-
+router.get('/wishlist',(req,res) => {
+  productHelpers.getProductByWishlist(req.session.user._id).then((products) =>{
+    res.render('user/wishlist-page',{products})
+  })
+})
 
 
 // --------------------------------------Ajax-------------------------------------------------------------
@@ -118,7 +121,7 @@ router.post('/otp-verify', (req, res) => {
 router.post('/add-or-remove-wishlist',(req, res) => {
   if(req.session.userLoggedIn) {
     userHelpers.updateuserWishlist(req.session.user._id, req.body.product).then((data) => {
-      res.json({ status: true })
+      res.json({ status: data })
     })
   }else{ 
     res.json({status:false})

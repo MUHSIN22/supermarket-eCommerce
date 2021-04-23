@@ -245,6 +245,9 @@
     font-size: 3rem;
     font-weight: 400;
 }
+.heart{
+    cursor: pointer;
+}
 @media screen and (max-width:600px){
     .product-card img {
         width: 165px;
