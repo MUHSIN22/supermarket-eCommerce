@@ -1,6 +1,5 @@
 module.exports.checkUserAvailability = ( req,res,next ) => {
-    console.log(req.session.userLogggedIn);
-    if(req.session.userLogggedIn){
+    if(req.session.user){
         next()
     }else{
         res.redirect('/login')

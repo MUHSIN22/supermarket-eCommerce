@@ -88,5 +88,17 @@ module.exports = {
                 })
             }
         })
+    },
+    addToCart : (userId,proId) => {
+        return new Promise(async (resolve,reject) =>{
+            let cartDetails = {
+                user: ObjectId(userId),
+                product : ObjectId(proId),
+                quantity : 1
+            }
+            db.get().collection(collections.CART_COLLECTION).insertOne(cartDetails).then(() => {
+                resolve(true)
+            })
+        })
     }
 };

@@ -85,7 +85,11 @@
                             {{else}}
                             <i class="far fa-heart heart" id="{{this._id}}"></i>
                             {{/if}}
-                            <a href="#"><button>Add to cart</button></a>
+                            {{#if this.cartItem.[0]}}
+                            <a href="/go-to-cart"><button>Go to cart</button></a>
+                            {{else}}
+                            <a href="/add-to-cart/{{this._id}}"><button>Add to cart</button></a>
+                            {{/if}}
                         </div>
                     </div>
                 

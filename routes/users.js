@@ -76,11 +76,24 @@ router.get('/product-details/:id',(req,res) =>{
   })
 })
 router.get('/wishlist',(req,res) => {
+  let user = req.session.user
   productHelpers.getProductByWishlist(req.session.user._id).then((products) =>{
-    res.render('user/wishlist-page',{products})
+    res.render('user/wishlist-page',{products,user})
   })
 })
-
+router.get('/add-to-cart/:id',checkUser.checkUserAvailability,(req,res) => {
+  let user = req.session.user
+  console.log('userid ',user._id);
+  userHelpers.addToCart(user._id,req.params.id).then((data)=>{
+    console.log(data);
+  })
+})
+router.get('/go-to-cart',(req,res) => {
+  let user = req.session.user
+  productHelpers.getProductForCart(user._id).then((cartData) => {
+    res.render('user/cart-page',{user,cartData})
+  })
+})
 
 // --------------------------------------Ajax-------------------------------------------------------------
 

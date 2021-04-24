@@ -1,6 +1,7 @@
 var db = require('../config/connection')
 var collection = require('../config/collections')
 const { ObjectId } = require('mongodb')
+const collections = require('../config/collections')
 
 module.exports = {
     addProduct : (productDetails) =>{
@@ -11,15 +12,46 @@ module.exports = {
         })
     },
     getProductForHomePageCards : (userLoggedIn,userId) =>{
+        userId = ObjectId(userId)
         return new Promise( async(resolve,reject) => {
             if(userLoggedIn){
-                let products = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+                let products = await  db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+                    {
+                        $lookup: {
+                            from : collection.WISHLIST_COLLECTION,
+                            let : {id : '$_id' , userId : userId},
+                            pipeline : [
+                                {
+                                    $match :{
+                                        $expr: {
+                                            $and: [
+                                                {$eq:['$user','$$userId']},
+                                                {$eq:['$wishlist','$$id']}
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            as : 'wishlist'
+                        }
+                    },
                     {
                         $lookup:{
-                            from:collection.WISHLIST_COLLECTION,
-                            localField:'_id',
-                            foreignField:'wishlist',
-                            as:'wishlist'
+                            from : collection.CART_COLLECTION,
+                            let:{id: '$_id' , userId : userId},
+                            pipeline : [
+                                {
+                                    $match :{
+                                        $expr: {
+                                            $and: [
+                                                {$eq:['$user','$$userId']},
+                                                {$eq:['$product','$$id']}
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            as : 'cartItem'
                         }
                     }
                 ]).sort({_id:-1}).limit(15).toArray()
@@ -62,6 +94,27 @@ module.exports = {
                 },
                 {
                     $project : {product:'$productDetails'}
+                }
+            ]).toArray()
+            resolve(products)
+        })
+    },
+    getProductForCart : (userId) => {
+        return new Promise(async (resolve,reject) => {
+            let products = await db.get().collection(collections.CART_COLLECTION).aggregate([
+                {
+                    $match: {user:ObjectId(userId)}
+                },
+                {
+                    $lookup:{
+                        from : collections.PRODUCT_COLLECTION,
+                        localField : 'product',
+                        foreignField : '_id',
+                        as: 'productDetails'
+                    }
+                },
+                {
+                    $unwind : '$productDetails'
                 }
             ]).toArray()
             resolve(products)
