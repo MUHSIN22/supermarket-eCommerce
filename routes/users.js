@@ -15,7 +15,10 @@ router.get('/', async (req, res, next) => {
   let user = req.session.user
   if (user) {
     productHelpers.getProductForHomePageCards(req.session.userLoggedIn, req.session.user._id).then((products) => {
-      res.render('user/home', { admin: false, user, products })
+      productHelpers.getProductForCart(user._id).then((cart) => {
+        cart = cart.length
+        res.render('user/home', { admin: false, user, products,cart })
+      })
     })
   } else {
     productHelpers.getProductForHomePageCards().then((products) => {
@@ -85,7 +88,7 @@ router.get('/add-to-cart/:id',checkUser.checkUserAvailability,(req,res) => {
   let user = req.session.user
   console.log('userid ',user._id);
   userHelpers.addToCart(user._id,req.params.id).then((data)=>{
-    console.log(data);
+    res.redirect('/go-to-cart')
   })
 })
 router.get('/go-to-cart',(req,res) => {

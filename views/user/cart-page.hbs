@@ -7,14 +7,13 @@
                     <input type="text">
                     <a href="#">Check</a>
                 </div>
+                {{#each cartData}}
                 <div class="cart-product">
                     <div class="details">
-
-                            <img src="/public/images/product-images/1618986635812-supermarket-product-gourmet-saf4.jpg" alt="Image">
-
+                            <img src="/images/product-images/{{this.productDetails.images.[0]}}" alt="Image">
                         <div class="name-price-remove">
-                            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, nihil.(2kg)</h2>
-                            <strong>1200</strong>
+                            <h2>{{this.productDetails.prouductName}}</h2>
+                            <strong>{{this.productDetails.productPrice}}</strong>
                             <a href="#"><span><i class="fas fa-trash"></i></span> Remove Product</a>
                         </div>
                         <div class="quantity-check">
@@ -28,6 +27,7 @@
                         </div>
                     </div>
                 </div>
+                {{/each}}
                 <div class="place-order-cart">
                     <a href="#"><button>Place Order</button></a>
                 </div>

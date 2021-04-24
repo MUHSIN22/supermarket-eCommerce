@@ -11,7 +11,7 @@
             <div class="account-and-cart">
                 {{#if user}}
                     <a href="/wishlist" style="text-decoration: none;color: var(--light);font-size: 1.4rem;"><i class="fas fa-heart"></i></a>
-                    <i class="fas fa-shopping-cart"><span class="badge">12</span></i>
+                    <a href="/go-to-cart" style="text-decoration: none;color: var(--light);font-size: 1.4rem;"><i class="fas fa-shopping-cart"><span class="badge">{{cart}}</span></i></a>
                     <i class="fas fa-user"></i>
                 {{else}}
                     <a href="/signup"><button class="header-signup-btn">Sign up</button></a>
